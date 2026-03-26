@@ -10,11 +10,11 @@ from threading import Thread
 app = FastAPI()
 
 # ---------- 全局加载模型（启动时加载一次） ----------
-MODEL_NAME = "model/qwen/Qwen2.5-0.5B-Instruct"  # 可根据需要更换其他 Qwen2.5 模型
+MODEL_NAME = "D:\code_study_program\code\pycharm\github_program\RAG_qwen2.5\model\qwen\Qwen2.5-0.5B-Instruct"  # 可根据需要更换其他 Qwen2.5 模型
 tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME, trust_remote_code=True)
 model = AutoModelForCausalLM.from_pretrained(
     MODEL_NAME,
-    torch_dtype=torch.float16,          # 使用半精度节省显存
+    dtype=torch.float16,          # 使用半精度节省显存
     device_map="auto",                  # 自动分配到可用 GPU/CPU
     trust_remote_code=True
 )
@@ -119,3 +119,7 @@ async def chat(request: ChatRequest):
 @app.get("/")
 def root():
     return {"status": "ok", "model": MODEL_NAME}
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="127.0.0.1", port=6066)

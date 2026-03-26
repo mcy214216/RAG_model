@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # @Time    : 2026/3/26 10:49
 # @Author  : mcy
-# @File    : backend1.py
+# @File    : backend_gemma3.py
 import asyncio
 import requests
 import json
@@ -105,3 +105,9 @@ async def chat(request: ChatRequest):
 @app.get("/")
 def root():
     return {"status": "ok", "model": DEFAULT_MODEL, "backend": "ollama"}
+
+
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="127.0.0.1", port=6066)
