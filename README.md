@@ -393,8 +393,10 @@ temperature 和 top_p 是两个重要的调节参数，
         frontend-gr.py
 
 ```
-
-
+### langchain
+该小节介绍如何使用langchain进行对话。其主要内容在我的另一个库中
+>https://github.com/mcy214216/Langchain-chain
+可以点击链接查看
 
 
 
